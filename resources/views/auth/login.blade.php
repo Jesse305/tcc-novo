@@ -22,7 +22,7 @@
           <h5 class="card-title">Login</h5>
         </div>
         <div class="card-body">
-          <form class="" action="" method="post">
+          <form class="" action="{{ route('login') }}" method="post">
             @csrf
             <div class="form-group row">
               <label for="cpf" class="col-md-4 col-form-label text-md-right">Usuário:</label>
@@ -38,9 +38,6 @@
               <label for="password" class="col-md-4 col-form-label text-md-right">Senha:</label>
               <div class="col-md-6">
                 <input class="form-control" type="password" name="password" id="password" value="{{ old('password') }}" required maxlength="18">
-                @if($errors->has('password'))
-                  <span class="text-danger font-weight-bold"> {{ $errors->first('password') }} </span>
-                @endif
               </div>
             </div>
 

@@ -8,11 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>TCC - @yield('title')</title>  
+    <title>TCC - @yield('title')</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
-    
+
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -28,7 +28,7 @@
 
     <!-- Scripts -->
 
-    
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -50,7 +50,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      
+
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -72,7 +72,7 @@
           <img src="{{ asset('img/avatarUser.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Usuário</a>
+          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -111,24 +111,16 @@
             </ul>
           </li>
 
-          <li class="nav-header">LABELS</li>
+          <li class="nav-header"></li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+              <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
               <i class="nav-icon fa fa-circle-o text-danger"></i>
-              <p class="text">Link 01</p>
+              <p>Sair</p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-circle-o text-warning"></i>
-              <p>Link 02</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-circle-o text-info"></i>
-              <p>Link 03</p>
-            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
           </li>
         </ul>
       </nav>

@@ -3,6 +3,9 @@ $(document).ready(function(){
   var cpf = $('.cpf');
   cpf.mask('000.000.000-00');
 
+  var telefone = $('.telefone');
+  telefone.mask('(00) 0000-0000');
+
   var btn_voltar = $('.btn_voltar');
   btn_voltar.click(function(){
     window.history.back();

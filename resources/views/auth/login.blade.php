@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>TCC - LOGIN</title>
+  <title>AI - LOGIN</title>
 
   <!-- styles -->
   <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
@@ -12,7 +12,7 @@
 <body>
 
   <nav class="navbar navbar-expand-sm bg-light">
-    <a class="navbar-brand text-info" href="/">Logo da Empresa</a>
+    <a class="navbar-brand text-info" href="/"> <img src="{{ asset('img/logo.png') }}" alt="" style="width: 50px;"> AI - Service</a>
   </nav>
 
   <div class="container-fluid" style="margin-top: 150px;">
@@ -42,8 +42,7 @@
             </div>
 
             <div class="text-center">
-              <button type="submit" class="btn btn-info btn-sm">Entrar</button> <br>
-              <a href="#" class="btn btn-link">Recuperar senha</a>
+              <button type="submit" class="btn btn-info btn-sm">Entrar</button>
             </div>
           </form>
         </div>

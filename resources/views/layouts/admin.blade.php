@@ -72,7 +72,7 @@
           <img src="{{ asset('img/avatarUser.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+          <a href="{{ route('user.cadastro', Auth::user()) }}" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -133,6 +133,15 @@
     <div class="content-wrapper">
 
         <div class="container-fluid" style="padding: 10px;">
+            @if(session('alerta'))
+            <div class="col-md-7 mx-auto">
+              <div class="alert alert-{{ session('alerta')['tipo'] }} text-center">
+                <button type="button" class="close btn_refresh">&times;</button>
+                <strong>{{ session('alerta')['texto'] }}</strong>
+              </div>
+            </div>
+            @endif
+
             @yield('content')
         </div>
 
@@ -140,7 +149,7 @@
 
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="text-center"><strong>Copyright &copy; 2018 <a href="#">Nome da Empresa</a>.</strong></div>
+    <div class="text-center"><strong>Copyright &copy; 2018 <a href="#">AI - Service</a>.</strong></div>
   </footer>
 
   <!-- Control Sidebar -->
@@ -188,5 +197,9 @@
 <script src="{{ asset('js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('js/demo.js') }}"></script>
+<!-- jquery mask -->
+<script src="{{ asset('js/jquery.mask.min.js') }}" charset="utf-8"></script>
+<!-- app javascript -->
+<script src="{{ asset('js/app.js') }}" charset="utf-8"></script>
 </body>
 </html>

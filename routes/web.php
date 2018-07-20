@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// User
+Route::get('/user/cadastro/{user?}', 'UserController@cadastro')->name('user.cadastro');
+Route::post('/user/inserir_atualizar_cadastro/{user?}', 'UserController@inserirAtualizarCadastro')->name('user.inserir_atualizar_cadastro');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Validator;
+use Auth;
 
 class UserController extends Controller
 {
@@ -12,6 +13,14 @@ class UserController extends Controller
     public function __contruct()
     {
       $this->middleware('auth');
+    }
+
+    public function lista()
+    {
+
+      return view('user.lista', [
+        'users' => User::all(),
+      ]);
     }
 
     public function cadastro(User $user)
@@ -64,7 +73,7 @@ class UserController extends Controller
 
         if($user->save()){
           return redirect()
-          ->route('home')
+          ->route('user.lista')
           ->with('alerta', [
             'tipo' => 'success',
             'texto' => 'Cadastro realizado com sucesso!',
@@ -96,10 +105,57 @@ class UserController extends Controller
 
         if($user->update($request->all())){
           return redirect()
-          ->route('home')
+          ->route('user.lista')
           ->with('alerta', [
             'tipo' => 'success',
             'texto' => 'Cadastro alterado com sucesso!',
+          ]);
+        }
+      }
+    }
+
+    public function excluir(User $user)
+    {
+
+      if($user->delete()){
+        return redirect()
+        ->back()
+        ->with('alerta', [
+          'tipo' => 'success',
+          'texto' => 'Cadastro excluído com sucesso!'
+        ]);
+      }
+    }
+
+    public function senha(User $user)
+    {
+
+      if(Auth::user()->id != $user->id){
+        return redirect()
+        ->back();
+      }
+
+      return view('user.senha', [
+        'user' => $user,
+      ]);
+    }
+
+    public function alterar_senha(User $user, Request $request)
+    {
+
+      $validacao = Validator::make($request->all(), [
+        'password' => 'required|min:6|confirmed'
+      ]);
+
+      $validacao->validate();
+
+      if(Auth::user()->id === $user->id){
+        if($user->update(['password' => bcrypt($request->password)])){
+          return redirect()
+          ->back()
+          ->with('alerta', [
+            'tipo' => 'success',
+            'texto' => 'Senha alterada com sucesso'
           ]);
         }
       }

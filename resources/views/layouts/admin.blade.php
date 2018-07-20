@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>TCC - @yield('title')</title>
+    <title>AI - @yield('title')</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="{{ asset('plugins/datepicker/datepicker3.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker-bs3.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables/jquery.dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <!-- Scripts -->
 
@@ -41,10 +43,13 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link"> <i class="fa fa-home" style="font-size: 20px;"></i> </a>
+        <a href="{{ route('home') }}" class="nav-link"> <i class="fa fa-home icone"></i> </a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contatos</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Quem Somos</a>
       </li>
     </ul>
 
@@ -59,7 +64,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="brand-link">
-      <img src="{{asset('img/logo.png')}}" alt="AdminLTE Logo" class="brand-image  elevation-3"
+      <img src="{{asset('img/logo.png')}}" alt="" class="brand-image  elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">AI - Service</span>
     </a>
@@ -82,7 +87,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link bg-info active">
               <i class="nav-icon fa fa-cogs"></i>
               <p>
                 Menu
@@ -91,27 +96,30 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Submenu 01-01</p>
+                <a href="{{ route('user.lista') }}" class="nav-link active">
+                  <i class="fa fa-user nav-icon"></i>
+                  <p>Usuários</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Submenu 01-02</p>
+                  <i class="fa fa-users nav-icon"></i>
+                  <p>Clientes</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Submenu 01-03</p>
+                  <i class="fa fa-car nav-icon"></i>
+                  <p>Veículos</p>
                 </a>
               </li>
             </ul>
           </li>
 
           <li class="nav-header"></li>
+          <li class="nav-item">
+            <a href="{{ route('user.senha', Auth::user()) }}" class="nav-link"> <i class="nav-icon fa fa-key"></i>  <p>Alterar Senha</p> </a>
+          </li>
           <li class="nav-item">
               <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">
@@ -134,7 +142,7 @@
 
         <div class="container-fluid" style="padding: 10px;">
             @if(session('alerta'))
-            <div class="col-md-7 mx-auto">
+            <div class="col-md-10 mx-auto">
               <div class="alert alert-{{ session('alerta')['tipo'] }} text-center">
                 <button type="button" class="close btn_refresh">&times;</button>
                 <strong>{{ session('alerta')['texto'] }}</strong>
@@ -201,5 +209,9 @@
 <script src="{{ asset('js/jquery.mask.min.js') }}" charset="utf-8"></script>
 <!-- app javascript -->
 <script src="{{ asset('js/app.js') }}" charset="utf-8"></script>
+<!-- dataTables -->
+<script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}" charset="utf-8"></script>
+<!-- sweetalert2 -->
+<script src="{{ asset('js/sweetalert2.all.js') }}" charset="utf-8"></script>
 </body>
 </html>

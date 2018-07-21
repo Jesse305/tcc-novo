@@ -6,6 +6,9 @@ $(document).ready(function(){
   var telefone = $('.telefone');
   telefone.mask('(00) 0000-0000');
 
+  var placa = $('.placa');
+  placa.mask('AAA-0000');
+
   var btn_voltar = $('.btn_voltar');
   btn_voltar.click(function(){
     window.history.back();
@@ -65,3 +68,10 @@ $(document).ready(function(){
     });
   });
 });
+
+//funções
+
+function maiuscula(campo){
+    var m = campo.value.toUpperCase();
+    campo.value = m;
+}

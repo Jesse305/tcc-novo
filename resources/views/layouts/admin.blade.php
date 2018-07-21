@@ -101,7 +101,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('veiculo.lista') }}" class="nav-link">
                   <i class="fa fa-car nav-icon"></i>
                   <p>Veículos</p>
                 </a>

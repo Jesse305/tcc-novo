@@ -42,5 +42,5 @@
 
 <div class="text-center">
   <button type="submit" class="btn btn-success btn-sm">Salvar</button>
-  <button type="button" class="btn btn-info btn-sm btn_voltar">Cancelar</button>
+  <button type="button" class="btn btn-info btn-sm btn_voltar">Voltar</button>
 </div>

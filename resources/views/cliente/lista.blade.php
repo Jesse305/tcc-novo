@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'EDIÇÃO CLIENTES')
+@section('title', 'CLIENTES')
 
 @section('content')
 <div class="col-md-10 mx-auto">

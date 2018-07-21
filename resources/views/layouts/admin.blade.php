@@ -67,7 +67,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('img/avatarUser.png') }}" class="img-circle elevation-2" alt="User Image">
+          <i class="fa fa-user text-light" style="font-size: 30px;"></i>
         </div>
         <div class="info">
           <a href="{{ route('user.cadastro', Auth::user()) }}" class="d-block">{{ Auth::user()->name }}</a>
@@ -104,6 +104,12 @@
                 <a href="{{ route('veiculo.lista') }}" class="nav-link">
                   <i class="fa fa-car nav-icon"></i>
                   <p>Veículos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('orcamento.lista') }}" class="nav-link">
+                  <i class="fa fa-check-square nav-icon"></i>
+                  <p>Orçamentos</p>
                 </a>
               </li>
             </ul>
@@ -185,5 +191,6 @@
 <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}" charset="utf-8"></script>
 <!-- sweetalert2 -->
 <script src="{{ asset('js/sweetalert2.all.js') }}" charset="utf-8"></script>
+@stack('scripts')
 </body>
 </html>

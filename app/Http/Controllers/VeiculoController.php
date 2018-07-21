@@ -136,4 +136,13 @@ class VeiculoController extends Controller
         ]);
       }
     }
+
+    public function veiculos_por_cliente($cliente_id)
+    {
+
+      $veiculos = Veiculo::where('cliente_id', $cliente_id)
+      ->get();
+
+      return $veiculos->toJson();
+    }
 }

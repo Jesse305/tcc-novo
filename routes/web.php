@@ -35,9 +35,15 @@ Route::get('/cliente/excluir/{cliente}', 'ClienteController@excluir')->name('cli
 Route::get('/cliente/edicao/{cliente}', 'ClienteController@edicao')->name('cliente.edicao');
 Route::post('/cliente/editar/{cliente}', 'ClienteController@editar')->name('cliente.editar');
 
+//Veículo
 Route::get('/veiculo/lista', 'VeiculoController@lista')->name('veiculo.lista');
 Route::get('/veiculo/cadastro', 'VeiculoController@cadastro')->name('veiculo.cadastro');
 Route::post('/veiculo/cadastrar', 'VeiculoController@cadastrar')->name('veiculo.cadastrar');
 Route::get('/veiculo/edicao/{veiculo}', 'VeiculoController@edicao')->name('veiculo.edicao');
 Route::post('/veiculo/editar/{veiculo}', 'VeiculoController@editar')->name('veiculo.editar');
 Route::get('/veiculo/excluir/{veiculo}', 'VeiculoController@excluir')->name('veiculo.excluir');
+Route::get('/veiculo/por_cliente/json/{cliente_id}', 'VeiculoController@veiculos_por_cliente')->name('veiculo.por_cliente.json');
+
+//Orçamento
+Route::get('/orcamento/lista', 'OrcamentoController@lista')->name('orcamento.lista');
+Route::get('/orcamento/cadastro_parte_1', 'OrcamentoController@cadastro_parte_1')->name('orcamento.cadastro_parte_1');

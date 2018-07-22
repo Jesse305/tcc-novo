@@ -69,7 +69,7 @@
         },
         success: function(data){
           $.each(data, function(i, d){
-            veiculo_id.append('<option value="' + d.id + '">' + d.modelo + '</option>');
+            veiculo_id.append('<option value="' + d.id + '" title="Placa: ' + d.placa + '" >' + d.modelo + '</option>');
           });
         }
       });

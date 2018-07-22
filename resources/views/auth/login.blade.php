@@ -50,6 +50,10 @@
     </div>
   </div>
 
+  <nav class="navbar navbar-expand-sm bg-light fixed-bottom">
+    <div class="col-md-3 mx-auto"><strong>Copyright &copy; 2018 <a href="#">AI - Service</a>.</strong></div>
+  </nav>
+
   <!-- scripts -->
   <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>

@@ -191,6 +191,8 @@
 <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}" charset="utf-8"></script>
 <!-- sweetalert2 -->
 <script src="{{ asset('js/sweetalert2.all.js') }}" charset="utf-8"></script>
+<!-- maskmoney -->
+<script src="{{ asset('js/jquery.maskmoney.min.js') }}" charset="utf-8"></script>
 @stack('scripts')
 </body>
 </html>

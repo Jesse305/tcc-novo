@@ -1,3 +1,18 @@
+//funções
+
+function maiuscula(campo){
+    var m = campo.value.toUpperCase();
+    campo.value = m;
+}
+
+function mask_money(input_money)
+{
+  input_money.maskMoney({
+    thousands: '.',
+    decimal: ',',
+  });
+}
+
 $(document).ready(function(){
   // mascaras
   var cpf = $('.cpf');
@@ -8,6 +23,9 @@ $(document).ready(function(){
 
   var placa = $('.placa');
   placa.mask('AAA-0000');
+
+  var money = $('.money');
+  mask_money(money);
 
   var btn_voltar = $('.btn_voltar');
   btn_voltar.click(function(){
@@ -68,10 +86,3 @@ $(document).ready(function(){
     });
   });
 });
-
-//funções
-
-function maiuscula(campo){
-    var m = campo.value.toUpperCase();
-    campo.value = m;
-}

@@ -47,3 +47,4 @@ Route::get('/veiculo/por_cliente/json/{cliente_id}', 'VeiculoController@veiculos
 //Orçamento
 Route::get('/orcamento/lista', 'OrcamentoController@lista')->name('orcamento.lista');
 Route::get('/orcamento/cadastro_parte_1', 'OrcamentoController@cadastro_parte_1')->name('orcamento.cadastro_parte_1');
+Route::post('/orcamento/cadastro_parte_2', 'OrcamentoController@cadastro_parte_2')->name('orcamento.cadastro_parte_2');

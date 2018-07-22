@@ -9,8 +9,8 @@
       <h5 class="card-title">Gerar Orçamento</h5>
     </div>
     <div class="card-body">
-      <form class="" action="" method="post">
-
+      <form class="" action="{{ route('orcamento.cadastro_parte_2') }}" method="post">
+        @csrf
         <div class="form-group row">
           <label for="cliente_id" class="col-md-3 col-form-label text-md-right">Cliente:</label>
           <div class="col-md-7">

@@ -75,7 +75,7 @@
           </tr>
           <tr>
             <th class="text-right">TOTAL:</th>
-            <td> <input class="form-control money" type="text" name="total" id="total" value="0,00" required style="width: 150px;" readonly> </td>
+            <td> <input class="form-control money" type="text" name="valor_total" id="total" value="0,00" required style="width: 150px;" readonly> </td>
           </tr>
         </table>
         <div class="text-right">
@@ -150,11 +150,12 @@ function add_item()
     calcula();
   });
 
-  form_gerar_pdf.submit(function(){
+  form_gerar_pdf.submit(function(event){
     calcula();
     if(moedaParaNumero(total.val()) < 0){
+      event.preventDefault();
       alert('Não é possível gerar orçamento com valor total negativo');
-      return;
+      return false;
     }
   });
 </script>

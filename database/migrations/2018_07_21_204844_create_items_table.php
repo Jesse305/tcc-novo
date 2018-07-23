@@ -15,7 +15,12 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('descricao');
+            $table->decimal('valor');
+            $table->integer('orcamento_id')->unsigned();            
             $table->timestamps();
+
+            $table->foreign('orcamento_id')->references('id')->on('orcamentos');
         });
     }
 

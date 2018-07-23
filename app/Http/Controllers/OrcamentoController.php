@@ -54,4 +54,9 @@ class OrcamentoController extends Controller
         'veiculo' => $veiculo,
       ]);
     }
+
+    public function cadastro_parte_3(Veiculo $veiculo, Request $request)
+    {
+      
+    }
 }

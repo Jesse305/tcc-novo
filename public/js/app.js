@@ -10,7 +10,19 @@ function mask_money(input_money)
   input_money.maskMoney({
     thousands: '.',
     decimal: ',',
+    allowZero: true,
   });
+}
+
+function numeroParaMoeda(numero) {
+  var numero = numero.toFixed(2).split('.');
+  numero[0] = numero[0].split(/(?=(?:...)*$)/).join('.');
+  return numero.join(',');
+}
+
+function moedaParaNumero(valor)
+{
+  return parseFloat(valor.replace(/\./g, '').replace(',', '.'));
 }
 
 $(document).ready(function(){

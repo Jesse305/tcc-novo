@@ -83,7 +83,7 @@
           <button type="button" class="btn btn-link" id="btn_add_item" title="Adicionar item" style="margin-right: 23px;"> <i class="fa fa-plus text-success"></i> </button>
         </div>
         <div class="text-center">
-          <button type="button" class="btn btn-info btn-sm btn_voltar">Voltar</button>
+          <a href="{{ route('orcamento.lista') }}" class="btn btn-info btn-sm">Cancelar</a>
           <button type="submit" class="btn btn-success btn-sm">Gerar</button>
         </div>
       </form>

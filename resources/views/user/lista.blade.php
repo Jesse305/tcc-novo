@@ -28,7 +28,11 @@
             <td>{{ $user->cpf }}</td>
             <td>
               @if($user->id != 1)
-                <button type="button" class="btn btn-link btn_excluir" data-href="{{ route('user.excluir', $user) }}" title="Excluir cadastro"> <i class="fa fa-trash text-danger icone"></i> </button>
+                @if($user->status == 1)
+                <a href="{{ route('user.status', $user) }}" class="btn btn-link" title="Inativar"> <i class="fa fa-ban icone text-danger"></i> </a>
+                @else
+                <a href="{{ route('user.status', $user) }}" class="btn btn-link" title="Ativar"> <i class="fa fa-check icone text-success"></i> </a>
+                @endif
               @endif
             </td>
           </tr>

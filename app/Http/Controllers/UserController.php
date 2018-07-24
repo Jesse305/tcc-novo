@@ -127,6 +127,25 @@ class UserController extends Controller
       }
     }
 
+    public function status(User $user)
+    {
+
+      $status = ['status' => 0];
+
+      if($user->status == 0){
+        $status = ['status' => 1];
+      }
+
+      if($user->update($status)){
+        return redirect()
+        ->back()
+        ->with('alerta', [
+          'tipo' => 'success',
+          'texto' => 'Status alterado com sucesso!',
+        ]);
+      }
+    }
+
     public function senha(User $user)
     {
 

@@ -19,6 +19,7 @@ class CreateClientesTable extends Migration
             $table->string('cpf');
             $table->string('telefone');
             $table->string('email')->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

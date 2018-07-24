@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Cliente extends Model
 {
     protected $fillable = [
-      'nome', 'cpf', 'telefone', 'email'
+      'nome', 'cpf', 'telefone', 'email', 'status'
     ];
 
     public function getVeiculos()
     {
-      
+
       return $this->hasMany(Veiculo::class, 'cliente_id', 'id');
     }
 }

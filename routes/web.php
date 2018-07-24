@@ -31,7 +31,7 @@ Route::post('/user/alterar_senha/{user}', 'UserController@alterar_senha')->name(
 Route::get('/cliente/lista', 'ClienteController@lista')->name('cliente.lista');
 Route::get('/cliente/cadastro', 'ClienteController@cadastro')->name('cliente.cadastro');
 Route::post('/cliente/cadastrar', 'ClienteController@cadastrar')->name('cliente.cadastrar');
-Route::get('/cliente/excluir/{cliente}', 'ClienteController@excluir')->name('cliente.excluir');
+Route::get('/cliente/status/{cliente}', 'ClienteController@status')->name('cliente.status');
 Route::get('/cliente/edicao/{cliente}', 'ClienteController@edicao')->name('cliente.edicao');
 Route::post('/cliente/editar/{cliente}', 'ClienteController@editar')->name('cliente.editar');
 

@@ -28,7 +28,13 @@
             <td>{{ $cliente->telefone }}</td>
             <td>{{ $cliente->email }}</td>
             <td>
-              <button type="button" class="btn btn-link btn_excluir" data-href="{{ route('cliente.excluir', $cliente) }}" title="Excluir cadastro"> <i class="fa fa-trash text-danger icone"></i> </button>
+              <a href="{{ route('cliente.status', $cliente) }}" class="btn btn-link">
+                @if($cliente->status == 0)
+                <i class="fa fa-check icone text-success" title="Ativar"></i>
+                @else
+                <i class="fa fa-ban icone text-danger" title="Inativar"></i>
+                @endif
+              </a>
             </td>
           </tr>
           @endforeach

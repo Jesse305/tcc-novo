@@ -68,7 +68,7 @@ class LoginController extends Controller
 
       if(Auth::attempt(['cpf' => $request->cpf, 'password' => $request->password, 'status' => 1])){
         return redirect()
-        ->route('home');
+        ->route('orcamento.cadastro_parte_1');
       }
     }
 

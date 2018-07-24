@@ -116,4 +116,23 @@ class ClienteController extends Controller
         'texto' => 'Cadastro não pode ser excluído!',
       ]);
     }
+
+    public function status(Cliente $cliente)
+    {
+      $status = 0;
+
+      if($cliente->status == 0){
+        $status = 1;
+      }
+
+      if($cliente->update(['status' => $status])){
+
+        return redirect()
+        ->back()
+        ->with('alerta', [
+          'tipo' => 'success',
+          'texto' => 'Status alterado com sucesso',
+        ]);
+      }
+    }
 }

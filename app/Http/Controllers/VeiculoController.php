@@ -25,7 +25,8 @@ class VeiculoController extends Controller
     private function lista_clientes()
     {
 
-      $lista_clientes = Cliente::orderBy('nome')
+      $lista_clientes = Cliente::where('status', 1)
+      ->orderBy('nome')
       ->get();
 
       return $lista_clientes;

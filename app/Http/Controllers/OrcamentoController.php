@@ -9,6 +9,7 @@ use App\Models\Orcamento;
 use App\Models\Item;
 use Validator;
 use Auth;
+use PDF;
 
 class OrcamentoController extends Controller
 {
@@ -18,11 +19,17 @@ class OrcamentoController extends Controller
       $this->middleware('auth');
     }
 
-    public function lista()
+    public function lista(Orcamento $orcamento)
     {
+      $orcamentos = Orcamento::all();
+
+      if($orcamento->id){
+        $orcamentos = Orcamento::where('id', $orcamento->id)
+        ->get();
+      }
 
       return view('orcamento.lista', [
-        'orcamentos' => Orcamento::all(),
+        'orcamentos' => $orcamentos,
       ]);
     }
 
@@ -92,12 +99,23 @@ class OrcamentoController extends Controller
         }
 
         return redirect()
-        ->route('orcamento.lista')
+        ->route('orcamento.lista', $orcamento->id)
         ->with('alerta', [
           'tipo' => 'success',
           'texto' => 'Orçamento gerado com sucesso'
         ]);
       }
 
+    }
+
+    public function pdf(Orcamento $orcamento)
+    {
+      $data = [
+        'orcamento' => $orcamento,
+      ];
+
+      $pdf = PDF::loadView('orcamento.pdf', $data);
+
+      return $pdf->stream('orcamento.pdf');
     }
 }

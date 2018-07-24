@@ -22,4 +22,10 @@ class Orcamento extends Model
 
       return $this->hasOne(Veiculo::class, 'id', 'veiculo_id');
     }
+
+    public function getItens()
+    {
+
+      return $this->hasMany(Item::class, 'orcamento_id', 'id');
+    }
 }

@@ -45,7 +45,8 @@ Route::get('/veiculo/excluir/{veiculo}', 'VeiculoController@excluir')->name('vei
 Route::get('/veiculo/por_cliente/json/{cliente_id}', 'VeiculoController@veiculos_por_cliente')->name('veiculo.por_cliente.json');
 
 //Orçamento
-Route::get('/orcamento/lista', 'OrcamentoController@lista')->name('orcamento.lista');
+Route::get('/orcamento/lista/{orcamento?}', 'OrcamentoController@lista')->name('orcamento.lista');
 Route::get('/orcamento/cadastro_parte_1', 'OrcamentoController@cadastro_parte_1')->name('orcamento.cadastro_parte_1');
 Route::post('/orcamento/cadastro_parte_2', 'OrcamentoController@cadastro_parte_2')->name('orcamento.cadastro_parte_2');
 Route::post('/orcamento/cadastro_parte_3/{veiculo}', 'OrcamentoController@cadastro_parte_3')->name('orcamento.cadastro_parte_3');
+Route::get('/orcamento/pdf/{orcamento}', 'OrcamentoController@pdf')->name('orcamento.pdf');

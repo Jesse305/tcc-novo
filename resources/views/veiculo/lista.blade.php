@@ -17,7 +17,6 @@
             <th>Modelo</th>
             <th>Placa</th>
             <th>Cor</th>
-            <th style="width: 50px;">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -27,7 +26,6 @@
             <td> <a href="{{ route('veiculo.edicao', $veiculo) }}"> {{ $veiculo->modelo }} </a> </td>
             <td> {{ $veiculo->placa }} </td>
             <td> {{ $veiculo->cor }} </td>
-            <td> <button type="button" class="btn btn-link btn_excluir" data-href="{{ route('veiculo.excluir', $veiculo) }}" title="Excluir cadastro"> <i class="fa fa-trash text-danger icone"></i> </button> </td>
           </tr>
           @endforeach
         </tbody>

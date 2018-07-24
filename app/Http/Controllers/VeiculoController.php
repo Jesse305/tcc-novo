@@ -17,8 +17,12 @@ class VeiculoController extends Controller
     public function lista()
     {
 
+      $veiculos = Veiculo::join('clientes', 'clientes.id', 'veiculos.cliente_id')
+      ->where('clientes.status', 1)
+      ->get();
+
       return view('veiculo.lista', [
-        'veiculos' => Veiculo::all(),
+        'veiculos' => $veiculos,
       ]);
     }
 

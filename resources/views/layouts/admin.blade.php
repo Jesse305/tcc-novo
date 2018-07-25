@@ -33,19 +33,8 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('home') }}" class="nav-link"> <i class="fa fa-home icone"></i> </a>
+        <a href="{{ route('user.lista') }}" class="nav-link"> <i class="fa fa-home icone"></i> </a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contatos</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Quem Somos</a>
-      </li>
-    </ul>
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -53,7 +42,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('home') }}" class="brand-link">
+    <a href="{{ route('user.lista') }}" class="brand-link">
       <img src="{{asset('img/logo.png')}}" alt="" class="brand-image"
            style="opacity: .8">
       <span class="brand-text font-weight-light">AI - Service</span>
@@ -74,8 +63,7 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link bg-info active">
               <i class="nav-icon fa fa-cogs"></i>
@@ -147,6 +135,7 @@
             @endif
 
             @yield('content')
+
         </div>
 
     </div>
@@ -166,12 +155,6 @@
 
 <!-- jQuery -->
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- datepicker -->

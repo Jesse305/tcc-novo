@@ -10,11 +10,13 @@ use Auth;
 class UserController extends Controller
 {
 
+    // acesso somente se autenticado
     public function __contruct()
     {
       $this->middleware('auth');
     }
 
+    // retorna a tela com a lista de usuários
     public function lista()
     {
 
@@ -23,6 +25,7 @@ class UserController extends Controller
       ]);
     }
 
+    // retorna a tela de cadastro e edição de usuário
     public function cadastro(User $user)
     {
 
@@ -31,6 +34,7 @@ class UserController extends Controller
       ]);
     }
 
+    // valida se o cpf já foi usado para cadastro
     private function existe_cpf($id, $cpf)
     {
       $count = User::where('cpf', $cpf)
@@ -40,6 +44,7 @@ class UserController extends Controller
       return $count;
     }
 
+    // valida se o email já foi utilizado para cadastro
     private function existe_email($id, $email)
     {
 
@@ -50,9 +55,10 @@ class UserController extends Controller
       return $count;
     }
 
+    // função que insere ou atualiza cadastro de usuário
     public function inserirAtualizarCadastro(User $user, Request $request)
     {
-
+      // faz a inserção de usuário
       if($user->id == null){
 
         $validacao = Validator::make($request->all(), [
@@ -82,6 +88,7 @@ class UserController extends Controller
 
       }
 
+      // faz o update de usuário se existir id de usuário
       if($user->id != null){
         $validacao = Validator::make($request->all(), [
           'name' => 'required|min:3',
@@ -114,21 +121,14 @@ class UserController extends Controller
       }
     }
 
-    public function excluir(User $user)
-    {
-
-      if($user->delete()){
-        return redirect()
-        ->back()
-        ->with('alerta', [
-          'tipo' => 'success',
-          'texto' => 'Cadastro excluído com sucesso!'
-        ]);
-      }
-    }
-
+    // altera o status do usuário entre ativo e inativo
     public function status(User $user)
     {
+
+      // impede que o administrador do sistema seja inativado
+      if($user->id == 1){
+        return redirect()->back();
+      }
 
       $status = ['status' => 0];
 
@@ -146,9 +146,10 @@ class UserController extends Controller
       }
     }
 
+    // retorna a tela de alterar senha
     public function senha(User $user)
     {
-
+      // impede que um usuário altere a senha de outro
       if(Auth::user()->id != $user->id){
         return redirect()
         ->back();
@@ -159,6 +160,7 @@ class UserController extends Controller
       ]);
     }
 
+    // função valida o formulário e altera a senha
     public function alterar_senha(User $user, Request $request)
     {
 

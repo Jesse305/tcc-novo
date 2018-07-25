@@ -13,12 +13,14 @@ use PDF;
 
 class OrcamentoController extends Controller
 {
+    // acesso somente se autenticado
     public function __construct()
     {
 
       $this->middleware('auth');
     }
 
+    // função que lista os orçamentos. lista todos ou o último inserido
     public function lista(Orcamento $orcamento)
     {
       $orcamentos = Orcamento::all();
@@ -33,6 +35,7 @@ class OrcamentoController extends Controller
       ]);
     }
 
+    // lista os clientes ativos ordenados por nome para usar no select
     private function lista_clientes()
     {
 
@@ -43,6 +46,7 @@ class OrcamentoController extends Controller
       return $lista_clientes;
     }
 
+    // retorna a primeira tela de cadastro de orçamento
     public function cadastro_parte_1()
     {
 
@@ -51,6 +55,7 @@ class OrcamentoController extends Controller
       ]);
     }
 
+    // valida o formulário de cadastro 1, se ok, retorna a tela de cadastro 2
     public function cadastro_parte_2(Request $request)
     {
 
@@ -68,6 +73,7 @@ class OrcamentoController extends Controller
       ]);
     }
 
+    // formata numero do tipo moeda para decimal para inserir no banco
     private function moeda_to_decimal($moeda)
     {
       $moeda = str_replace('.', '', $moeda);
@@ -76,6 +82,7 @@ class OrcamentoController extends Controller
       return $moeda;
     }
 
+    // insere o orçamento e os itens do orçamento no banco de dados
     public function cadastro_parte_3(Veiculo $veiculo, Request $request)
     {
       $user = Auth::user();
@@ -109,6 +116,7 @@ class OrcamentoController extends Controller
 
     }
 
+    // gera o pdf do orçamento
     public function pdf(Orcamento $orcamento)
     {
       $data = [

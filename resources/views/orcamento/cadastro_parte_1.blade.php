@@ -53,10 +53,12 @@
   var cliente_id = $('#cliente_id');
   var veiculo_id = $('#veiculo_id');
 
+  //chama a função de popular o select de veículo ao alterar o valor do select clientes
   cliente_id.on('change', function(){
     populate_select_veiculo($(this).val());
   });
 
+  // função que popula o select de veiculos relacionados ao cliente via ajax
   function populate_select_veiculo(clienteid)
   {
     if(clienteid != ''){
@@ -77,6 +79,7 @@
     reset_select_veiculo();
   }
 
+  // função que reseta o select de veículos para popular novamente
   function reset_select_veiculo()
   {
     veiculo_id.find('option').remove();

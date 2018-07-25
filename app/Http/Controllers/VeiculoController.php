@@ -9,11 +9,14 @@ use Validator;
 
 class VeiculoController extends Controller
 {
+
+    // acesso somente se autenticado
     public function __contruct()
     {
       $this->middleware('auth');
     }
 
+    // retorna a tela de listagem de veiculos somente de clientes ativos
     public function lista()
     {
 
@@ -26,6 +29,7 @@ class VeiculoController extends Controller
       ]);
     }
 
+    // lista os clientes ativos ordenados por nome para usar no select
     private function lista_clientes()
     {
 
@@ -36,6 +40,7 @@ class VeiculoController extends Controller
       return $lista_clientes;
     }
 
+    // retorna o ano atual + 1 para utilizar no select de ano
     private function ano()
     {
 
@@ -43,6 +48,7 @@ class VeiculoController extends Controller
       return $ano + 1;
     }
 
+    // retorna a tela de cadastro
     public function cadastro()
     {
 
@@ -52,6 +58,7 @@ class VeiculoController extends Controller
       ]);
     }
 
+    // valida o formuário e insere o veículo no banco de dados
     public function cadastrar(Request $request)
     {
 
@@ -78,6 +85,7 @@ class VeiculoController extends Controller
       }
     }
 
+    // retorna a tela de edição de cadastro de veículo
     public function edicao(Veiculo $veiculo)
     {
 
@@ -88,6 +96,7 @@ class VeiculoController extends Controller
       ]);
     }
 
+    // valida se placa já foi utilizada para em outro cadastro de veículo para edição
     private function valida_placa_edicao($veiculo_id, $veiculo_placa)
     {
       $count = Veiculo::where('id', '<>', $veiculo_id)
@@ -97,6 +106,7 @@ class VeiculoController extends Controller
       return $count;
     }
 
+    // valida formulário e edita cadastro de veículo
     public function editar(Veiculo $veiculo, Request $request)
     {
 
@@ -128,20 +138,7 @@ class VeiculoController extends Controller
       }
     }
 
-    public function excluir(Veiculo $veiculo)
-    {
-
-      if($veiculo->delete()){
-
-        return redirect()
-        ->route('veiculo.lista')
-        ->with('alerta', [
-          'tipo' => 'success',
-          'texto' => 'Cadastro excluído com sucesso!'
-        ]);
-      }
-    }
-
+    // retorna os veículos por cliente no formato json para uso via ajax
     public function veiculos_por_cliente($cliente_id)
     {
 

@@ -114,11 +114,13 @@ function add_item()
   return tr;
 }
 
+  aplica máscara de moéda em cada item incluído
   btn_add_item.click(function(){
     itens.append(add_item());
     mask_money($('.money'));
   });
 
+  // remove o último item da lista e chama a função calcula valor total
   var btn_remove = $('#btn_remove');
   btn_remove.click(function(){
     itens.find('.add').last().remove();
@@ -129,6 +131,7 @@ function add_item()
   var desconto = $('#desconto');
   var total = $('#total');
 
+  // função que soma os valores dos itens menos o valor de desconto
   function calcula()
   {
     var t = 0;
@@ -146,10 +149,12 @@ function add_item()
 
   }
 
+  // chama a função calcular sempre que o cursor sai dos campos de valores
   $('.money').on('blur', function(){
     calcula();
   });
 
+  // impede de gerar orçamento com valor negativo
   form_gerar_pdf.submit(function(event){
     calcula();
     if(moedaParaNumero(total.val()) < 0){

@@ -8,12 +8,14 @@ use Validator;
 
 class ClienteController extends Controller
 {
+    // acesso somente se autenticado
     public function __construct()
     {
 
       $this->middleware('auth');
     }
 
+    // retorna a tela com a lista de clientes
     public function lista()
     {
 
@@ -22,12 +24,14 @@ class ClienteController extends Controller
       ]);
     }
 
+    // retorna a tela de cadastro de cliente
     public function cadastro()
     {
 
       return view('cliente.cadastro');
     }
 
+    // valida o formulário e insere cliente
     public function cadastrar(Request $request)
     {
       $validacao = Validator::make($request->all(), [
@@ -52,6 +56,7 @@ class ClienteController extends Controller
 
     }
 
+    // retorna a tela de edição de cadastro de cliente
     public function edicao(Cliente $cliente)
     {
 
@@ -60,6 +65,7 @@ class ClienteController extends Controller
       ]);
     }
 
+    // verifica se o cpf já foi utilizado em outro cadastro
     private function cpf_existe($id, $cpf)
     {
       $count = Cliente::where('id', '<>', $id)
@@ -69,6 +75,7 @@ class ClienteController extends Controller
       return $count;
     }
 
+    // valida formulário e edita cadastro de cliente
     public function editar(Cliente $cliente, Request $request)
     {
 
@@ -97,26 +104,7 @@ class ClienteController extends Controller
       }
     }
 
-    public function excluir(Cliente $cliente)
-    {
-
-      if($cliente->delete()){
-        return redirect()
-        ->back()
-        ->with('alerta', [
-          'tipo' => 'success',
-          'texto' => 'Cadastro excluído com sucesso!',
-        ]);
-      }
-
-      return redirect()
-      ->back()
-      ->with('alerta', [
-        'tipo' => 'info',
-        'texto' => 'Cadastro não pode ser excluído!',
-      ]);
-    }
-
+    //altera o status do cliente entre ativo e inativo
     public function status(Cliente $cliente)
     {
       $status = 0;

@@ -114,7 +114,7 @@ function add_item()
   return tr;
 }
 
-  aplica máscara de moéda em cada item incluído
+  // aplica máscara de moéda em cada item incluído
   btn_add_item.click(function(){
     itens.append(add_item());
     mask_money($('.money'));

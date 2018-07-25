@@ -22,7 +22,7 @@
         <tbody>
           @foreach($veiculos as $veiculo)
           <tr>
-            <td> <a href="{{ route('cliente.edicao', $veiculo->getCliente->id) }}"> {{ $veiculo->getCliente->nome }} </a> </td>
+            <td> <a href="{{ route('cliente.edicao', $veiculo->cliente_id) }}"> {{ $veiculo->cliente_nome }} </a> </td>
             <td> <a href="{{ route('veiculo.edicao', $veiculo) }}"> {{ $veiculo->modelo }} </a> </td>
             <td> {{ $veiculo->placa }} </td>
             <td> {{ $veiculo->cor }} </td>

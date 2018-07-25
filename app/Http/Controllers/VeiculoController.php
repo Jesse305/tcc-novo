@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Veiculo;
 use App\Models\Cliente;
 use Validator;
+use Illuminate\Support\Facades\DB;
 
 class VeiculoController extends Controller
 {
@@ -22,6 +23,14 @@ class VeiculoController extends Controller
 
       $veiculos = Veiculo::join('clientes', 'clientes.id', 'veiculos.cliente_id')
       ->where('clientes.status', 1)
+      ->select(
+        'veiculos.id',
+        'veiculos.modelo',
+        'veiculos.placa',
+        'veiculos.cor',
+        DB::raw('clientes.id as cliente_id'),
+        DB::raw('clientes.nome as cliente_nome')
+      )
       ->get();
 
       return view('veiculo.lista', [

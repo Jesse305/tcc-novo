@@ -75,7 +75,7 @@
           </tr>
           <tr>
             <th class="text-right">TOTAL:</th>
-            <td> <input class="form-control money" type="text" name="valor_total" id="total" value="0,00" required style="width: 150px;" disabled> </td>
+            <td> <input class="form-control money" type="text" name="valor_total" id="total" value="0,00" required style="width: 150px;" readonly> </td>
           </tr>
         </table>
         <div class="text-right">

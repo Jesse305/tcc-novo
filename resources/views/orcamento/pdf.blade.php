@@ -6,6 +6,7 @@
   </head>
   <body>
     <div style="text-align: right">
+      Situação do Orçamento: {{ $orcamento->status() }}. &nbsp;
       Impresso em: {{ date('d/m/Y') }}
     </div>
     <table border="1px solid gray" style="width: 100%;">

@@ -19,7 +19,7 @@
             <th>Veículo</th>
             <th>Placa</th>
             <th>Data</th>
-            <th style="width: 50px;">Ações</th>
+            <th style="width: 70px;">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -30,7 +30,14 @@
             <td>{{ $orcamento->getVeiculo->modelo }}</td>
             <td>{{ $orcamento->getVeiculo->placa }}</td>
             <td>{{ date('d/m/Y', strtotime($orcamento->created_at)) }}</td>
-            <td> <a href="{{ route('orcamento.pdf', $orcamento) }}" target="_blank" class="btn btn-link" title="visualizar PDF"> <i class="fa fa-file text-info icone"></i> </a>  </td>
+            <td>
+              @if($orcamento->validado == 0)
+                <a href="{{ route('orcamento.status', $orcamento) }}" title="Validar"> <i class="fa fa-check-square-o text-danger icone"></i> </a>
+              @else
+                <a href="{{ route('orcamento.status', $orcamento) }}" title="Inválidar"> <i class="fa fa-check-square-o text-success icone"></i> </a>
+              @endif
+              <a href="{{ route('orcamento.pdf', $orcamento) }}" target="_blank" class="btn btn-link" title="visualizar PDF"> <i class="fa fa-file text-info icone"></i> </a>
+            </td>
           </tr>
           @endforeach
         </tbody>

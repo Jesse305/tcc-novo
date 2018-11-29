@@ -84,7 +84,7 @@
         </div>
         <div class="text-center">
           <a href="{{ route('orcamento.lista') }}" class="btn btn-info btn-sm">Cancelar</a>
-          <button type="submit" class="btn btn-success btn-sm">Gerar</button>
+          <button type="submit" class="btn btn-success btn-sm">Salvar</button>
         </div>
       </form>
     </div>

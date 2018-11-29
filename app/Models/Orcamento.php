@@ -9,7 +9,7 @@ class Orcamento extends Model
 {
     // define as colunas que podem ser manipuladas na inserção e atualização no banco de dados
     protected $fillable = [
-      'user_id', 'veiculo_id', 'desconto', 'valor_total'
+      'user_id', 'veiculo_id', 'desconto', 'valor_total', 'validado'
     ];
 
     // retorna o responsável pelo orçamento
@@ -31,5 +31,16 @@ class Orcamento extends Model
     {
 
       return $this->hasMany(Item::class, 'orcamento_id', 'id');
+    }
+
+    public function status()
+    {
+
+      $status = "INVÁLIDO";
+      if($this->validado == 1){
+        $status = "VALIDADO";
+      }
+
+      return $status;
     }
 }

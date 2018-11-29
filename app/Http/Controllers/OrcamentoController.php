@@ -127,4 +127,25 @@ class OrcamentoController extends Controller
 
       return $pdf->stream('orcamento.pdf');
     }
+
+    //altera o status do orçamento entre válidado e inválidado
+    public function status(Orcamento $orcamento)
+    {
+
+      $novo_status = 1;
+      if($orcamento->validado == 1){
+        $novo_status = 0;
+      }
+
+      $msg = ($novo_status == 1 ? " Validado " : " Inválidado ");
+
+      if($orcamento->update(['validado' => $novo_status])){
+        return redirect()
+        ->back()
+        ->with('alerta', [
+          'tipo' => 'success',
+          'texto' => 'Orçamento ' . $msg . ' com sucesso',
+        ]);
+      }
+    }
 }

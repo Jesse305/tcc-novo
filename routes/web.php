@@ -50,3 +50,4 @@ Route::get('/orcamento/cadastro_parte_1', 'OrcamentoController@cadastro_parte_1'
 Route::post('/orcamento/cadastro_parte_2', 'OrcamentoController@cadastro_parte_2')->name('orcamento.cadastro_parte_2');
 Route::post('/orcamento/cadastro_parte_3/{veiculo}', 'OrcamentoController@cadastro_parte_3')->name('orcamento.cadastro_parte_3');
 Route::get('/orcamento/pdf/{orcamento}', 'OrcamentoController@pdf')->name('orcamento.pdf');
+Route::get('/orcamento/status/{orcamento}', 'OrcamentoController@status')->name('orcamento.status');

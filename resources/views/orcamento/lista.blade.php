@@ -14,6 +14,7 @@
       <table class="table table-condensed table-hover dt_table">
         <thead>
           <tr>
+            <th>Nº</th>
             <th>Responsável</th>
             <th>Cliente</th>
             <th>Veículo</th>
@@ -25,6 +26,7 @@
         <tbody>
           @foreach($orcamentos as $orcamento)
           <tr>
+            <td> 00{{ $orcamento->id }}</td>
             <td>{{ $orcamento->getResponsavel->name }}</td>
             <td>{{ $orcamento->getVeiculo->getCliente->nome }}</td>
             <td>{{ $orcamento->getVeiculo->modelo }}</td>

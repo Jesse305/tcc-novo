@@ -11,7 +11,7 @@
     </div>
     <table border="1px solid gray" style="width: 100%;">
       <tr>
-        <th colspan="2" align="center" style="background-color: #e6e6e6;">EMPRESA</th>
+        <th colspan="2" style="background-color: #e6e6e6;">EMPRESA</th>
       </tr>
       <tr>
         <td> <b>AI Service - Lanternagem e Pintura</b> </td>
@@ -28,7 +28,7 @@
         <td colspan="2"> <b>Email:</b> ai-service@email.com </td>
       </tr>
       <tr>
-        <th colspan="2" align="center" style="background-color: #e6e6e6;">ORÇAMENTO</th>
+        <th colspan="2" style="background-color: #e6e6e6;">ORÇAMENTO Nº 00{{ $orcamento->id }}</th>
       </tr>
       <tr>
         <td> <b>Responsável:</b> {{ $orcamento->getResponsavel->name }} </td>
